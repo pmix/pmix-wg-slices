@@ -455,6 +455,30 @@
 \newcommand{\refAttributeItem}[1]{\index[index_attribute]{#1}\hyperref[attr:#1]{\code{#1}}}
 \newcommand{\refattr}[1]{\refAttributeItem{#1}}
 
+\newenvironment{signature}[1]{
+\versionMarker{#1}
+\cspecificstart
+\begin{codepar}
+}{
+\end{codepar}
+\cspecificend
+}
+
+\newcommand{\copySignature}[3]{
+  \StdCopyEcho{sig:#1}{
+    \begin{signature}{#2}
+      #3
+    \end{signature}
+  }
+}
+
+\newcommand{\pasteSignature}[1]{
+  \StdPaste{sig:#1}
+}
+
+\newlength{\sigspace}
+\setlength{\sigspace}{0.083in} % width of the bolded, monospace characters used in codepar env
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Code and placeholder semantic tagging.
 %
